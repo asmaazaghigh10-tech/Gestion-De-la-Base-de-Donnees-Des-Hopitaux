@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1000.0"
+            style="-fx-background-color: #1a1a2e;"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hopital.FXMLDocumentController">
+   <children>
+
+      <!-- PANNEAU CONNEXION -->
+      <AnchorPane fx:id="paneConnexion" visible="true"
+                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+                  style="-fx-background-color:#1a1a2e;">
+         <children>
+            <VBox alignment="CENTER" spacing="0.0"
+                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" spacing="20.0" maxWidth="360" minWidth="320"
+                        style="-fx-background-color:#16213e; -fx-background-radius:16; -fx-border-color:#00b4d8; -fx-border-radius:16; -fx-border-width:1;">
+                     <padding><Insets top="40.0" right="40.0" bottom="40.0" left="40.0"/></padding>
+                     <children>
+                        <VBox alignment="CENTER" spacing="8">
+                           <children>
+                              <Label text="Gestion Hospitaliere"
+                                     style="-fx-text-fill:#00b4d8; -fx-font-size:22; -fx-font-weight:bold;"/>
+                              <Label text="Acces securise au systeme"
+                                     style="-fx-text-fill:#90e0ef; -fx-font-size:13;"/>
+                           </children>
+                        </VBox>
+                        <Separator/>
+                        <VBox spacing="6">
+                           <children>
+                              <Label text="Votre CIN" style="-fx-text-fill:#90e0ef; -fx-font-size:13;"/>
+                              <TextField fx:id="txtCin" promptText="Saisir votre CIN..."
+                                         style="-fx-background-color:#0f3460; -fx-text-fill:#e0e0e0; -fx-border-color:#00b4d8; -fx-border-radius:8; -fx-background-radius:8; -fx-padding:10; -fx-font-size:14;"/>
+                           </children>
+                        </VBox>
+                        <Label fx:id="lblLoginErreur" text="" visible="false"
+                               style="-fx-text-fill:#ef233c; -fx-font-size:12;"/>
+                        <Button fx:id="btnConnexion" text="Se Connecter"
+                                onAction="#handleConnexion" maxWidth="Infinity"
+                                style="-fx-background-color:#00b4d8; -fx-text-fill:#0d0d0d; -fx-font-weight:bold; -fx-font-size:14; -fx-background-radius:8; -fx-padding:12; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <Label text="Entrez votre CIN pour acceder a votre espace"
+                               style="-fx-text-fill:#4a6880; -fx-font-size:11;" wrapText="true"
+                               textAlignment="CENTER" alignment="CENTER"/>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+
+
+      <!-- PANNEAU SECRETAIRE -->
+      <AnchorPane fx:id="paneSecretaire" visible="false"
+                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+                  style="-fx-background-color:#1a1a2e;">
+         <children>
+            <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="64.0"
+                        style="-fx-background-color:#0f3460; -fx-border-color:#00b4d8; -fx-border-width:0 0 2 0;"
+                        BorderPane.alignment="CENTER">
+                     <padding><Insets left="20.0" right="20.0"/></padding>
+                     <children>
+                        <Label text="Espace Secretariat"
+                               style="-fx-text-fill:#00b4d8; -fx-font-size:20; -fx-font-weight:bold;"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Label text="Connecte(e) : " style="-fx-text-fill:#90e0ef; -fx-font-size:13;"/>
+                        <Label fx:id="lblNomSecretaire" text="---"
+                               style="-fx-text-fill:#caf0f8; -fx-font-size:13; -fx-font-weight:bold;">
+                           <HBox.margin><Insets right="18.0"/></HBox.margin>
+                        </Label>
+                        <Button text="Deconnexion" onAction="#handleDeconnexion"
+                                style="-fx-background-color:transparent; -fx-text-fill:#ef233c; -fx-border-color:#ef233c; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:5 14 5 14; -fx-cursor:hand; -fx-font-weight:bold;"
+                                mnemonicParsing="false"/>
+                     </children>
+                  </HBox>
+               </top>
+
+               <right>
+                  <VBox alignment="TOP_CENTER" prefWidth="170.0" spacing="10.0"
+                        style="-fx-background-color:#16213e; -fx-border-color:#0f3460; -fx-border-width:0 0 0 2;"
+                        BorderPane.alignment="CENTER">
+                     <padding><Insets top="20.0" left="14.0" right="14.0"/></padding>
+                     <children>
+                        <Label text="ACTIONS"
+                               style="-fx-text-fill:#4a6880; -fx-font-size:11; -fx-font-weight:bold;">
+                           <VBox.margin><Insets bottom="6.0"/></VBox.margin>
+                        </Label>
+                        <Button fx:id="btnAjouterPatient" text="+ Ajouter"
+                                maxWidth="Infinity" onAction="#handleAjouterPatient"
+                                style="-fx-background-color:#00b4d8; -fx-text-fill:#0d0d0d; -fx-font-weight:bold; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <Button fx:id="btnModifierPatient" text="Modifier"
+                                maxWidth="Infinity" onAction="#handleModifierPatient"
+                                style="-fx-background-color:#ff9f1c; -fx-text-fill:#0d0d0d; -fx-font-weight:bold; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <Button fx:id="btnSupprimerPatient" text="Supprimer"
+                                maxWidth="Infinity" onAction="#handleSupprimerPatient"
+                                style="-fx-background-color:#ef233c; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <Button fx:id="btnChercherPatient" text="Chercher"
+                                maxWidth="Infinity" onAction="#handleChercherPatient"
+                                style="-fx-background-color:transparent; -fx-text-fill:#00b4d8; -fx-border-color:#00b4d8; -fx-border-radius:8; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand; -fx-font-weight:bold;"
+                                mnemonicParsing="false"/>
+                        <Separator>
+                           <VBox.margin><Insets top="6.0" bottom="6.0"/></VBox.margin>
+                        </Separator>
+                        <Button text="Actualiser"
+                                maxWidth="Infinity" onAction="#handleActualiserSec"
+                                style="-fx-background-color:transparent; -fx-text-fill:#4a6880; -fx-border-color:#4a6880; -fx-border-radius:8; -fx-background-radius:8; -fx-padding:8; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <VBox alignment="CENTER" spacing="2"
+                              style="-fx-background-color:#0f3460; -fx-background-radius:8; -fx-padding:12;">
+                           <VBox.margin><Insets top="10.0"/></VBox.margin>
+                           <children>
+                              <Label fx:id="lblNbPatients" text="0"
+                                     style="-fx-text-fill:#00b4d8; -fx-font-size:28; -fx-font-weight:bold;"/>
+                              <Label text="patients"
+                                     style="-fx-text-fill:#90e0ef; -fx-font-size:11;"/>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </right>
+
+               <center>
+                  <VBox spacing="0" BorderPane.alignment="CENTER">
+                     <padding><Insets top="16.0" left="16.0" right="16.0" bottom="16.0"/></padding>
+                     <children>
+                        <Label text="Liste des Patients"
+                               style="-fx-text-fill:#90e0ef; -fx-font-size:14; -fx-font-weight:bold;">
+                           <VBox.margin><Insets bottom="8.0"/></VBox.margin>
+                        </Label>
+                        <TableView fx:id="tblSecretaire" VBox.vgrow="ALWAYS"
+                                   style="-fx-background-color:#16213e; -fx-table-cell-border-color:#0f3460; -fx-control-inner-background:#16213e; -fx-control-inner-background-alt:#1a1a2e;">
+                           <columns>
+                              <TableColumn fx:id="secColCin"       text="CIN"            prefWidth="100"/>
+                              <TableColumn fx:id="secColNom"       text="Nom Complet"     prefWidth="180"/>
+                              <TableColumn fx:id="secColTel"       text="Telephone"       prefWidth="120"/>
+                              <TableColumn fx:id="secColDateNaiss" text="Date Naissance"  prefWidth="120"/>
+                              <TableColumn fx:id="secColMotif"     text="Motif / Maladie" prefWidth="170"/>
+                              <TableColumn fx:id="secColStatus"    text="Statut"          prefWidth="100"/>
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                           </columnResizePolicy>
+                           <placeholder>
+                              <Label text="Aucun patient enregistre."
+                                     style="-fx-text-fill:#4a6880; -fx-font-size:14;"/>
+                           </placeholder>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </center>
+
+            </BorderPane>
+         </children>
+      </AnchorPane>
+
+
+      <!-- PANNEAU MEDECIN -->
+      <AnchorPane fx:id="paneMedecin" visible="false"
+                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+                  style="-fx-background-color:#1a1a2e;">
+         <children>
+            <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+               <top>
+                  <HBox alignment="CENTER_LEFT" prefHeight="64.0"
+                        style="-fx-background-color:#0f3460; -fx-border-color:#00b4d8; -fx-border-width:0 0 2 0;"
+                        BorderPane.alignment="CENTER">
+                     <padding><Insets left="20.0" right="20.0"/></padding>
+                     <children>
+                        <Label text="Espace Consultation"
+                               style="-fx-text-fill:#00b4d8; -fx-font-size:20; -fx-font-weight:bold;"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Label text="Dr " style="-fx-text-fill:#90e0ef; -fx-font-size:13;"/>
+                        <Label fx:id="lblNomMedecin" text="---"
+                               style="-fx-text-fill:#caf0f8; -fx-font-size:13; -fx-font-weight:bold;">
+                           <HBox.margin><Insets right="18.0"/></HBox.margin>
+                        </Label>
+                        <Button text="Deconnexion" onAction="#handleDeconnexion"
+                                style="-fx-background-color:transparent; -fx-text-fill:#ef233c; -fx-border-color:#ef233c; -fx-border-radius:6; -fx-background-radius:6; -fx-padding:5 14 5 14; -fx-cursor:hand; -fx-font-weight:bold;"
+                                mnemonicParsing="false"/>
+                     </children>
+                  </HBox>
+               </top>
+
+               <right>
+                  <VBox alignment="TOP_CENTER" prefWidth="170.0" spacing="10.0"
+                        style="-fx-background-color:#16213e; -fx-border-color:#0f3460; -fx-border-width:0 0 0 2;"
+                        BorderPane.alignment="CENTER">
+                     <padding><Insets top="20.0" left="14.0" right="14.0"/></padding>
+                     <children>
+                        <Label text="ACTIONS"
+                               style="-fx-text-fill:#4a6880; -fx-font-size:11; -fx-font-weight:bold;">
+                           <VBox.margin><Insets bottom="6.0"/></VBox.margin>
+                        </Label>
+                        <Button fx:id="btnOuvrirDossier" text="Ouvrir Dossier"
+                                maxWidth="Infinity" onAction="#handleOuvrirDossier"
+                                style="-fx-background-color:#00b4d8; -fx-text-fill:#0d0d0d; -fx-font-weight:bold; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <Button fx:id="btnMedAjouter" text="+ Ajouter"
+                                maxWidth="Infinity" onAction="#handleMedAjouter"
+                                style="-fx-background-color:#38b000; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <Button fx:id="btnMedModifier" text="Modifier"
+                                maxWidth="Infinity" onAction="#handleMedModifier"
+                                style="-fx-background-color:#ff9f1c; -fx-text-fill:#0d0d0d; -fx-font-weight:bold; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <Button fx:id="btnMedSupprimer" text="Supprimer"
+                                maxWidth="Infinity" onAction="#handleMedSupprimer"
+                                style="-fx-background-color:#ef233c; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <Button fx:id="btnMedChercher" text="Chercher"
+                                maxWidth="Infinity" onAction="#handleMedChercher"
+                                style="-fx-background-color:transparent; -fx-text-fill:#00b4d8; -fx-border-color:#00b4d8; -fx-border-radius:8; -fx-background-radius:8; -fx-padding:10; -fx-cursor:hand; -fx-font-weight:bold;"
+                                mnemonicParsing="false"/>
+                        <Separator>
+                           <VBox.margin><Insets top="6.0" bottom="6.0"/></VBox.margin>
+                        </Separator>
+                        <Button text="Actualiser"
+                                maxWidth="Infinity" onAction="#handleActualiserMed"
+                                style="-fx-background-color:transparent; -fx-text-fill:#4a6880; -fx-border-color:#4a6880; -fx-border-radius:8; -fx-background-radius:8; -fx-padding:8; -fx-cursor:hand;"
+                                mnemonicParsing="false"/>
+                        <VBox spacing="4"
+                              style="-fx-background-color:#0f3460; -fx-background-radius:8; -fx-padding:10;">
+                           <VBox.margin><Insets top="10.0"/></VBox.margin>
+                           <children>
+                              <Label text="LEGENDE"
+                                     style="-fx-text-fill:#4a6880; -fx-font-size:10; -fx-font-weight:bold;"/>
+                              <Label text="[J] En attente"
+                                     style="-fx-text-fill:#ffd60a; -fx-font-size:11;"/>
+                              <Label text="[B] En cours"
+                                     style="-fx-text-fill:#00b4d8; -fx-font-size:11;"/>
+                              <Label text="[V] Termine"
+                                     style="-fx-text-fill:#38b000; -fx-font-size:11;"/>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </right>
+
+               <center>
+                  <VBox spacing="0" BorderPane.alignment="CENTER">
+                     <padding><Insets top="16.0" left="16.0" right="16.0" bottom="16.0"/></padding>
+                     <children>
+                        <Label text="File des Patients"
+                               style="-fx-text-fill:#90e0ef; -fx-font-size:14; -fx-font-weight:bold;">
+                           <VBox.margin><Insets bottom="8.0"/></VBox.margin>
+                        </Label>
+                        <TableView fx:id="tblMedecin" VBox.vgrow="ALWAYS"
+                                   style="-fx-background-color:#16213e; -fx-table-cell-border-color:#0f3460; -fx-control-inner-background:#16213e; -fx-control-inner-background-alt:#1a1a2e;">
+                           <columns>
+                              <TableColumn fx:id="medColCin"        text="CIN"            prefWidth="100"/>
+                              <TableColumn fx:id="medColNom"        text="Nom Complet"     prefWidth="170"/>
+                              <TableColumn fx:id="medColDateNaiss"  text="Date Naissance"  prefWidth="120"/>
+                              <TableColumn fx:id="medColMaladie"    text="Maladie / Motif" prefWidth="160"/>
+                              <TableColumn fx:id="medColOrdonnance" text="Ordonnance"      prefWidth="160"/>
+                              <TableColumn fx:id="medColStatus"     text="Statut"          prefWidth="100"/>
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                           </columnResizePolicy>
+                           <placeholder>
+                              <Label text="Aucun patient en file d'attente."
+                                     style="-fx-text-fill:#4a6880; -fx-font-size:14;"/>
+                           </placeholder>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </center>
+
+            </BorderPane>
+         </children>
+      </AnchorPane>
+
+   </children>
+</AnchorPane>
